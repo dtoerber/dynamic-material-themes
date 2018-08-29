@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+app-toolbar {
+  @include mat-elevation(8);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+}
+
+app-dashboard {
+  flex: 5;
+}
+
+@media only screen and (max-width: 600px) {
+  aside {
+    flex: 0;
+  }
+}

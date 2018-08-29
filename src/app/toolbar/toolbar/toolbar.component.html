@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>Theme Demo</h1>
+    <div *ngIf="isDarkTheme | async as isDarkTheme">
+      <mat-slide-toggle labelPosition="before" [checked]="isDarkTheme" (change)="toggleDarkTheme($event.checked)">
+        Dark Theme
+      </mat-slide-toggle>
+    </div>
+    <div *ngIf="!(isDarkTheme | async) as isDarkTheme">
+      <mat-slide-toggle labelPosition="before" [checked]="!isDarkTheme" (change)="toggleDarkTheme($event.checked)">
+        Light Theme
+      </mat-slide-toggle>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
