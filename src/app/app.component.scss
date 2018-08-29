@@ -13,9 +13,3 @@ app-toolbar {
 app-dashboard {
   flex: 5;
 }
-
-@media only screen and (max-width: 600px) {
-  aside {
-    flex: 0;
-  }
-}
