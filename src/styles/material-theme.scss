@@ -14,11 +14,28 @@ $theme: mat-light-theme($primary, $accent, $warn);
 // Dark Theme
 .dark-theme {
   color: $light-primary-text;
-  $dark-primary: mat-palette($mat-yellow);
-  $dark-accent: mat-palette($mat-yellow);
+  $dark-primary: mat-palette($mat-orange);
+  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
   $dark-warn: mat-palette($mat-red);
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
   @include component-themes($dark-theme);
+}
+
+// Custom Theme
+.custom {
+  color: $light-primary-text;
+  $custom-theme-primary: mat-palette($mat-light-blue);
+  $custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+  $custom-theme-warn: mat-palette($mat-red);
+
+  $custom-theme: mat-light-theme(
+    $custom-theme-primary,
+    $custom-theme-accent,
+    $custom-theme-warn
+  );
+
+  @include angular-material-theme($custom-theme);
+  @include component-themes($custom-theme);
 }

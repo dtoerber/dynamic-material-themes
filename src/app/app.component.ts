@@ -1,27 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import * as fromStore from './+store';
 import { Observable } from 'rxjs';
-import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div [ngClass]="{'dark-theme': isDarkTheme | async }">
-      <div class="mat-app-background">
-        <app-toolbar></app-toolbar>
-        <div class="content mat-typography"></div>
-        <app-tile></app-tile>
-        <app-dashboard></app-dashboard>
-      </div>
-    </div>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  isDarkTheme: Observable<boolean>;
+  theme$: Observable<string>;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private store: Store<fromStore.State>) {}
 
   ngOnInit() {
-    this.isDarkTheme = this.themeService.isDarktheme;
+    this.theme$ = this.store.pipe(select(fromStore.selectTheme));
+  }
+
+  setTheme(theme: string) {
+    this.store.dispatch(new fromStore.SetThemeAction(theme));
   }
 }

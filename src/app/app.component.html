@@ -1,0 +1,11 @@
+<div *ngIf="theme$ | async as theme" [class]="theme">
+  <div class="mat-app-background">
+    <app-toolbar></app-toolbar>
+    <a mat-button (click)="setTheme('default')">Default Theme</a>
+    <a mat-button (click)="setTheme('custom')">Custom Theme</a>
+    <a mat-button (click)="setTheme('dark-theme')">Dark Theme</a>
+    <div class="content mat-typography"></div>
+    <app-tile></app-tile>
+    <app-dashboard></app-dashboard>
+  </div>
+</div>

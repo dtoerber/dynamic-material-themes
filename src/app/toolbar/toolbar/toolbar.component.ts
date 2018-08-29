@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '../../core/services/theme.service';
 import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import * as fromStore from '../../+store';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,15 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  isDarkTheme: Observable<boolean>;
+  theme$: Observable<string>;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private store: Store<fromStore.State>) {}
 
-  ngOnInit() {
-    this.isDarkTheme = this.themeService.isDarktheme;
-  }
+  ngOnInit() {}
 
-  toggleDarkTheme(checked: boolean) {
-    this.themeService.setDarkTheme(checked);
+  setTheme(theme: string) {
+    this.store.dispatch(new fromStore.SetThemeAction(theme));
   }
 }
